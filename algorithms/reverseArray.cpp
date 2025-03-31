@@ -1,30 +1,38 @@
 //One way to reverse an array is to swap the first and last and repeat
 
 #include <iostream>
-using namespace std;
+/*
+ * Array Reversal Algorithm
+ * -------------------------
+ * Reversing an array involves rearranging its elements such that the first element 
+ * becomes the last, the second becomes the second-to-last, and so on.
+ *
+ * Characteristics:
+ * - Time Complexity: O(n), where n is the number of elements in the array.
+ * - Space Complexity: O(1), as the reversal is performed in-place without using extra memory.
+ * - Simple and efficient for reversing arrays of any size.
+ *
+ * Approach:
+ * - Use two pointers: one starting at the beginning of the array and the other at the end.
+ * - Swap the elements at these pointers and move the pointers toward each other.
+ * - Repeat the process until the pointers meet or cross.
+ */
 
 int main()
 {
-    int userInts[5];
-    int n = sizeof(userInts) / sizeof(userInts[0]);
-    int temp;
+    int array[] = {1, 2, 3, 4, 5};
+    int size = sizeof(array) / sizeof(array[0]);
+    int *left = array; //for arrays in c/c++ the name itself is a pointer to the first element in the array
+    int *right = array + size - 1; //points to last element
+    
+    while (left < right){
+        std::swap(*left, *right);
 
-    for (int i = 0; i < 5; i++)
-    {
-        cin >> userInts[i];
+        //move the pointers inward
+        left++;
+        right--;
     }
-    
-    for (int i = 0; i < (5/2); i++)
-    {
-        int temp = userInts[i];
-        userInts[i] = userInts[n - 1 - i]; //swap first and last
-        userInts[n - 1 - i] = temp; //swap last and first
-        
+    for (int i = 0; i < size; i++){
+        std::cout << array[i] << ' ';
     }
-    
-    for (int i = 0; i < 5; i++)
-        cout << userInts[i] << " ";
-
-    cout << endl;
-    
 }
