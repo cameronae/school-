@@ -17,8 +17,8 @@ int main()
     for (int i = 0; i < (5/2); i++)
     {
         int temp = userInts[i];
-        userInts[i] = userInts[n - 1 - i];
-        userInts[n - 1 - i] = temp;
+        userInts[i] = userInts[n - 1 - i]; //swap first and last
+        userInts[n - 1 - i] = temp; //swap last and first
         
     }
     
