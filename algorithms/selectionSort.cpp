@@ -28,10 +28,10 @@ int main()
     int size = sizeof(arr) / sizeof(arr[0]);
 
     for (int i = 0; i < size; i++){
-        minIndex = i;
-        minValue = arr[minIndex];
+        minIndex = i; //set the first element as the minimum
+        minValue = arr[minIndex]; //set the first element as the minimum value
         for (int j = i + 1; j < size; j++){
-            if(arr[j] < arr[minIndex])
+            if(arr[j] < arr[minIndex]) //if the next element is less than the current min set minIndex to that next element and the minValue to that next element
                 minIndex = j;
                 minValue = arr[j];
         }
