@@ -20,13 +20,19 @@ int main()
 {
     int size = 10;
     int array[10] = {1, 4, 23, 2, 8, 10, 14, 5, 19, 20};
-    for (int i = 0; i < size; i++){
-        for(int j = i + 1; j < size; j++){
-            if(array[i] > array[j]){
-                std::swap(array[i], array[j]);
+    bool sort;
+    int pass = 1;
+    std::cout << "Now performing the bubble sort\n";
+	std::cout << "------------------------------\n";\
+    do{
+    sort = false;
+    for(int i = 0; i < size - 1; i++){
+            if(array[i] > array[i + 1]){
+               std::swap(array[i], array[i + 1]);
+                sort = true;
             }
         }
-    }
+    } while (sort);
     for (int i = 0; i < size; i++){
         std:: cout << array[i] << ' ';
     }
