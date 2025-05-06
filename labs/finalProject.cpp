@@ -21,46 +21,46 @@ Display the “reverse” array*/
 using namespace std;
 
 // Function prototypes
-// complete the following function prototype as you complete each function 
 void readFile(ifstream& inFile, char letters[], int size);
 void dispArray(char array[], int size);
-
 int key(char letters[], int size);
-void encryptArray(char letters[], char encrypt[], int key, int size);
-
-void decryptArray(char decrypt[], char encrypt[], int key, int size);
-
-void reverseArray(char letters[], char reverse[], int size);
+void encrypt(char letters[], char encrypted[], int key, int size);
+void decrypt(char decrypted[], char encrypted[], int key, int size);
+void revArray(char letters[], char reverse[], int size);
 
 int main()
 {
     const int  SIZE = 12;
-    int offsetKey = 0;
+    
     // Arrays to hold the numbers 
     char letters[SIZE];
-    char encrypt[SIZE];
-    char decrypt[SIZE];
+    char encrypted[SIZE];
+    char decrypted[SIZE];
     char reverse[SIZE];
     // File stream object
     ifstream inFile;
     
-    //readFikle into array
+    //readFile into array
     readFile(inFile, letters, SIZE);
     //display the array 
+    cout << "Display of letters array. \n";
     dispArray(letters, SIZE);
 
     //Calculate and display the offsetKey
-    cout << key(letters, SIZE) << endl;
+    cout << "Offset Key = " <<  key(letters, SIZE) << endl;
 
     //encrypt the array
-    encryptArray(letters, encrypt, key(letters,SIZE), SIZE);
-    dispArray(encrypt, SIZE);
+    encrypt(letters, encrypted, key(letters,SIZE), SIZE);
+    cout << "encryrpted array.\n";
+    dispArray(encrypted, SIZE);
     //decrypt the array
-    decryptArray(decrypt, encrypt, key(letters, SIZE), SIZE);
-    dispArray(decrypt, SIZE);
+    decrypt(decrypted, encrypted, key(letters, SIZE), SIZE);
+    cout << "decrypted array.\n";
+    dispArray(decrypted, SIZE);
     
     //reverse the array
-    reverseArray(letters, reverse, SIZE);
+    revArray(letters, reverse, SIZE);
+    cout << "Reversed array.\n";
     dispArray(reverse, SIZE);
     
     return 0;
@@ -68,11 +68,10 @@ int main()
 
 void readFile(ifstream& inFile, char letters[], int size){
     string fileName; 
-    cout << "Please Enter the file name: ";   
     cin >> fileName;   
     inFile.open(fileName);
     if(!inFile.is_open()){ //if user does not enter a correct file then it does not work
-        cout << "Error trying to open file, make sure it is the correct file name,";
+        cout << "Error trying to open file, make sure it is the correct file name.";
     }
     for(int i = 0; i < size; i++){
         inFile >> letters[i];
@@ -82,7 +81,7 @@ void readFile(ifstream& inFile, char letters[], int size){
 
 void dispArray(char array[], int size){
     for (int i = 0; i < size; i++){
-        cout << array[i] << ' ';
+        cout << array[i];
     }
     cout << endl;
 }
@@ -91,33 +90,29 @@ and add them together to create the value for “offsetKey” Return an integer 
 int key (char letters[], int size){
     int offsetKey = 0;
     for (int  i = 0; i < size; i++){
-        if (letters[i] == 'A' || letters[i] == 'E'){
+        if (letters[i] == 'A' || letters[i] == 'E' || letters[i] == 'a' || letters[i] == 'e'){
             offsetKey++; //increases the count for the key
         }
     }
     return offsetKey;
 }
 //this function encrypts the letters array by adding the ASCII value from the key function to it and storing that value in the encrypt array
-void encryptArray (char letters[], char encrypt[], int key, int size){
+void encrypt (char letters[], char encrypted[], int key, int size){
     for (int i = 0; i < size; i++){
-        encrypt[i] = letters[i] + key;
+        encrypted[i] = letters[i] + key;
     }
 }
 //This funciton takes the encrypted array and subtracts the key offset value to decrypt it and stores it in the decrypt array
-void decryptArray(char decrypt[], char encrypt[], int key, int size){
+void decrypt(char decrypted[], char encrypted[], int key, int size){
     for (int i = 0; i < size; i++){
-        decrypt[i] = encrypt[i] - key;
+        decrypted[i] = encrypted[i] - key;
     }
 }
 //this function takes the letters array and reverses the characters in the array and then stores them into the reverse array 
-void reverseArray(char letters[], char reverse[], int size){
+void revArray(char letters[], char reverse[], int size){
     int right = size - 1;
-    for (int left = 0; left < size / 2; left++){
-        swap(letters[left], letters[right]); //std::swap function instead of using temp value
-        right--;
-    }
-    
     for (int i = 0; i < size; i++){
-        reverse[i] = letters[i];
+        reverse[i] = letters[right];
+        right--;
     }
 }
