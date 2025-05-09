@@ -19,7 +19,7 @@ std::string Artwork::GetTitle(){
 
 void Artwork::PrintInfo(){
     artist.PrintInfo();
-    std::cout << "Artwork: " << GetTitle() << "Created in " << GetYearCreated();
+    std::cout << "Artwork: " << GetTitle() << "\nCreated in " << GetYearCreated();
 }
 // TODO: Define get functions: GetTitle(), GetYearCreated()
 
