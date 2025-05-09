@@ -50,13 +50,13 @@ int main() {
 	cin >> kilograms2;
 	cin >> grams2;
    
-   Mass mass1(kilograms1, grams1);
-   Mass mass2(kilograms2, grams2);
+    Mass mass1(kilograms1, grams1);
+    Mass mass2(kilograms2, grams2);
    
-   Mass difference1 = mass1 - mass2; //uses the first operator overload function to subtract two of the objects
-   Mass difference2 = mass1 - kilograms2; //adds the mass t
+    Mass difference1 = mass1 - mass2; //uses the first operator overload function to subtract two of the objects
+    Mass difference2 = mass1 - kilograms2; //adds the mass t
    
-   mass1.Print();
+    mass1.Print();
 	cout << endl;
 	mass2.Print();
 	cout << endl;
@@ -64,9 +64,9 @@ int main() {
 	difference1.Print();
 	cout << endl;
    
-   cout << endl;
+    cout << endl;
    
-   mass1.Print();
+    mass1.Print();
 	cout << endl;
 	cout << kilograms2 << " kilograms" << endl;
 	cout << "Difference: ";
