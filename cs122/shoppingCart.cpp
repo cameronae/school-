@@ -21,6 +21,9 @@ class cart{
         int GetPrice() const;
         void SetQuantity(int itemQuantity);
         int GetQuantity() const;
+        int CalcCost();
+        void GetInfo(cart& item);
+        void PrintInfo();
     private:
         int itemPrice;
         int itemQuantity;
@@ -50,20 +53,35 @@ void cart::SetQuantity(int itemQuantity){
 int cart::GetQuantity() const{
     return itemQuantity;
 }
+int cart::CalcCost(){
+    return itemPrice * itemQuantity;
+}
+
+void cart::GetInfo(cart& item){
+    std::string name;
+    int price, quantity;
+    std::cout << "Item 1\nEnter the item name:\n";
+    getline(std::cin, name);
+    item.SetName(name);
+    std::cout << "Enter the item quantity:\n";
+    std::cin >> price;
+    item.SetPrice(price);
+    std::cout << "Enter the item price:\n";
+    std::cin >> quantity;
+    item.SetQuantity(quantity);
+}
+
+void cart::PrintInfo(){
+    std::cout << "TOTAL COST\n" << GetName() << ' ' << GetQuantity() << " @ $" << GetPrice() << '=' << '$' << CalcCost() << std::endl;
+}
 
 
 int main()
 {
     cart item1, item2;
-    std::string name;
-    int price, quantity;
-
-    getline(std::cin, name);
-    std::cin.ignore();
-
-    std::cin >> quantity;
-    std::cin >> price;
-    
+   
+    GetInfo(item1);
+    item1.PrintInfo();
 
 
 
