@@ -13,5 +13,11 @@ int main(){
     for(int i = 0; i < 5; ++i){
         std::cout << *(numbers + i) << ' '; //this will cout the actual numbers in the array rather than the addresses for them
     }
+
+    double* dynamic;
+    int arrayNum = 5;
+    dynamic = new double [arrayNum]; //assigns a pointer to a "new" array which is used for a dynamic array
+
+    int* pointer = nullptr; // nullptr indicates that the pointer is pointing to nothing
     return 0;
 }
