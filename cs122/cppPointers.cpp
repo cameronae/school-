@@ -19,5 +19,27 @@ int main(){
     dynamic = new double [arrayNum]; //assigns a pointer to a "new" array which is used for a dynamic array
 
     int* pointer = nullptr; // nullptr indicates that the pointer is pointing to nothing
+
+    //This is an example of appending a new array to a dynamic array when there are too many data members added to the array and the capacity needs increased
+    int* appendArray = new int[arrayNum];
+    int appendArrayCapacity = 5;
+    int nextInput;
+    std::cin >> nextInput;
+    if(appendArrayCapacity == arrayNum){
+        appendArrayCapacity *= 2; //increases the arrays capacity by double to make more room when too many ints in array
+        int* newArray = new int[appendArrayCapacity];
+
+        for(int i = 0; i < arrayNum; ++i){
+            newArray[i] = appendArray[i]; //copy the data in the array into the tempary array
+        }
+        
+        delete[] appendArray;
+
+        appendArray = newArray;
+    }
+    appendArray[arrayNum] = nextInput; //this appends the next inpuit to the end of the array 
+    ++arrayNum;
+
+
     return 0;
 }
